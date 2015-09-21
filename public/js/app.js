@@ -62,6 +62,9 @@ MetronicApp.config(['$controllerProvider', function($controllerProvider) {
   $controllerProvider.allowGlobals();
 }]);
 
+// Set value of jumpersup_url
+MetronicApp.value('jumpersup_url', '');
+
 /********************************************
  END: BREAKING CHANGE in AngularJS v1.3.x:
 *********************************************/
@@ -147,7 +150,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                             '../../../assets/admin/pages/scripts/index3.js',
                             '../../../assets/admin/pages/scripts/tasks.js',
 
-                             'js/controllers/DashboardController.js'
+                             'js/controllers/DashboardController.js',
+                             'js/services/CommonService.js'
                         ] 
                     });
                 }]

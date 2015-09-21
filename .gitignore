@@ -1,2 +1,5 @@
 node_modules
 public/static/uploads/
+logs/error.log
+logs/info.log
+logs/warn.log
