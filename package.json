@@ -1,0 +1,42 @@
+{
+  "name": "JumpersUp",
+  "main": "app.js",
+  "version": "0.0.1",
+  "author": "JumpersUp S.A.P.I. de C.V.",
+  "private": true,
+  "contribuitors": [
+    {
+      "name": "Angel Malavar",
+      "email": "angel.malavar@gmail.com"
+    }
+  ],
+  "scripts": {
+    "start": "NODE_ENV=production forever start app.js",
+    "develop": "nodemon app.js | node_modules/bunyan/bin/bunyan",
+    "test": "NODE_ENV=test node start app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@www.hovahealth.com:root/efimed-web.git"
+  },
+  "dependencies": {
+    "async": "0.9.x",
+    "body-parser": "~1.0.0",
+    "bunyan": "^1.4.0",
+    "ejs": "^0.8.5",
+    "email-templates": "^2.0.1",
+    "express": "^4.0.0",
+    "express-jwt": "^0.5.1",
+    "express-validator": "2.3.x",
+    "jsonwebtoken": "^3.2.0",
+    "method-override": "~1.0.0",
+    "mongoose": "4.0.x",
+    "morgan": "~1.0.0",
+    "nodemailer": "1.1.x",
+    "nodemailer-smtp-transport": "0.1.x",
+    "passport": "0.2.x",
+    "passport-local": "1.0.x",
+    "passport-local-mongoose": "0.3.x",
+    "socket.io": "^1.3.2"
+  }
+}
