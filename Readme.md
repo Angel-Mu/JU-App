@@ -18,6 +18,10 @@ npm run develop
 ```
 npm start
 ```
+### Ejecutar ambiente de desarrollo en S.O Windows
+```
+npm run dev_win 
+```
 #### Requerimientos
 ```
 node
