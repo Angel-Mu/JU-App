@@ -13,7 +13,8 @@
   "scripts": {
     "start": "NODE_ENV=production forever start app.js",
     "develop": "nodemon app.js | node_modules/bunyan/bin/bunyan",
-    "test": "NODE_ENV=test node start app.js"
+    "test": "NODE_ENV=test node start app.js",
+    "dev_win": "SET NODE_ENV=develop nodemon app.js"
   },
   "repository": {
     "type": "git",
