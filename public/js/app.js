@@ -157,6 +157,20 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
                 }]
             }
         })
+        // Dashboard
+        .state('login', {
+            url: "/login.html",
+            templateUrl: "views/login.html",            
+            data: {pageTitle: 'Login', pageSubTitle: 'users login'},
+            resolve: {
+                deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before '#ng_load_plugins_before'
+                    });
+                }]
+            }
+        })
 
         // AngularJS plugins
         .state('fileupload', {
