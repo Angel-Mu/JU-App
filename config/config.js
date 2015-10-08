@@ -5,12 +5,12 @@ module.exports =
     {
 			production: {
         db: 'mongodb://localhost/jumpersup_db',
-				url: 'http://localhost:8080',
+				url: 'http://localhost:80',
         root: rootPath,
         app: {
           name: 'JumpersUp'
         },
-        port: 8010
+        port: 80
       },
       development: {
         db:"mongodb://localhost/jumpersup_db_dev",
