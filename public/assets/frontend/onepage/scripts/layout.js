@@ -1,4 +1,4 @@
-var Layout = function () {
+var LayoutHome = function () {
     var isMobileDevice = function() {
         return  ((
             navigator.userAgent.match(/Android/i) ||

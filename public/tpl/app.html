@@ -1,0 +1,32 @@
+<!-- BEGIN HEADER -->
+<div data-ng-include="'tpl/header.html'" data-ng-controller="HeaderController" class="page-header navbar navbar-fixed-top">
+</div>
+<!-- END HEADER -->
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+	<div data-ng-include="'tpl/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper">
+	</div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<div data-ng-include="'tpl/page-head.html'" data-ng-controller="PageHeadController" class="page-head">
+			</div>
+			<div ui-view class="fade-in-up">
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END CONTAINER -->
+<!-- BEGIN FOOTER -->
+<div data-ng-include="'tpl/footer.html'" data-ng-controller="FooterController" class="page-footer">
+</div>
+<!-- END FOOTER -->
+
+	<script type="text/javascript">
+		/* Init Metronic's core jquery plugins and layout scripts */
+		$(document).ready(function() {   
+			Metronic.init(); // Run metronic theme
+			Metronic.setAssetsPath('assets/'); // Set the assets folder path			
+		});
+	</script>

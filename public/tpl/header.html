@@ -1,27 +1,84 @@
-<!-- BEGIN HEADER TOP -->
-<div class="page-header-top">
-	<div class="container">
-		<!-- BEGIN LOGO -->
-		<div class="page-logo">
-			<a href="#/dashboard.html"><img src="../../../assets/admin/layout3/img/logo-default.png" alt="logo" class="logo-default"></a>
+<!-- BEGIN HEADER INNER -->
+<div class="page-header-inner">
+	<!-- BEGIN LOGO -->
+	<div class="page-logo">
+		<a href="index.html">
+		<img src="../../../assets/admin/layout4/img/logo-light.png" alt="logo" class="logo-default"/>
+		</a>
+		<div class="menu-toggler sidebar-toggler">
+			<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
 		</div>
-		<!-- END LOGO -->
-		<!-- BEGIN RESPONSIVE MENU TOGGLER -->
-		<a href="javascript:;" class="menu-toggler"></a>
-		<!-- END RESPONSIVE MENU TOGGLER -->
+	</div>
+	<!-- END LOGO -->
+	<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+	<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+	</a>
+	<!-- END RESPONSIVE MENU TOGGLER -->
+	<!-- BEGIN PAGE ACTIONS -->
+	<!-- DOC: Remove "hide" class to enable the page header actions -->
+	<div class="page-actions">
+		<div class="btn-group">
+			<button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+			<span class="hidden-sm hidden-xs">Actions&nbsp;</span><i class="fa fa-angle-down"></i>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li>
+					<a href="#">
+					<i class="icon-docs"></i> New Post </a>
+				</li>
+				<li>
+					<a href="#">
+					<i class="icon-tag"></i> New Comment </a>
+				</li>
+				<li>
+					<a href="#">
+					<i class="icon-share"></i> Share </a>
+				</li>
+				<li class="divider">
+				</li>
+				<li>
+					<a href="#">
+					<i class="icon-flag"></i> Comments <span class="badge badge-success">4</span>
+					</a>
+				</li>
+				<li>
+					<a href="#">
+					<i class="icon-users"></i> Feedbacks <span class="badge badge-danger">2</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- END PAGE ACTIONS -->
+	<!-- BEGIN PAGE TOP -->
+	<div class="page-top">
+		<!-- BEGIN HEADER SEARCH BOX -->
+		<!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
+		<form class="search-form" action="extra_search.html" method="GET">
+			<div class="input-group">
+				<input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+				<span class="input-group-btn">
+				<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+				</span>
+			</div>
+		</form>
+		<!-- END HEADER SEARCH BOX -->
 		<!-- BEGIN TOP NAVIGATION MENU -->
 		<div class="top-menu">
 			<ul class="nav navbar-nav pull-right">
+				<li class="separator hide"></li>
 				<!-- BEGIN NOTIFICATION DROPDOWN -->
-				<li class="dropdown dropdown-extended dropdown-dark dropdown-notification" id="header_notification_bar">
-					<a href="javascript:;" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
+				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+				<li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="icon-bell"></i>
-					<span class="badge badge-default">7</span>
+					<span class="badge badge-success">
+					7 </span>
 					</a>
 					<ul class="dropdown-menu">
 						<li class="external">
-							<h3>You have <strong>12 pending</strong> tasks</h3>
-							<a href="javascript:;">view all</a>
+							<h3><span class="bold">12 pending</span> notifications</h3>
+							<a href="#/profile/dashboard">view all</a>
 						</li>
 						<li>
 							<ul class="dropdown-menu-list scroller" style="height: 250px;" data-handle-color="#637283">
@@ -120,16 +177,110 @@
 					</ul>
 				</li>
 				<!-- END NOTIFICATION DROPDOWN -->
+				<li class="separator hide"></li>
+				<!-- BEGIN INBOX DROPDOWN -->
+				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+				<li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<i class="icon-envelope-open"></i>
+					<span class="badge badge-danger">
+					4 </span>
+					</a>
+					<ul class="dropdown-menu">
+						<li class="external">
+							<h3>You have <span class="bold">7 New</span> Messages</h3>
+							<a href="#/profile/dashboard">view all</a>
+						</li>
+						<li>
+							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
+								<li>
+									<a href="#">
+									<span class="photo">
+									<img src="../../../assets/admin/layout4/img/avatar2.jpg" class="img-circle" alt="">
+									</span>
+									<span class="subject">
+									<span class="from">
+									Lisa Wong </span>
+									<span class="time">Just Now </span>
+									</span>
+									<span class="message">
+									Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<span class="photo">
+									<img src="../../../assets/admin/layout4/img/avatar3.jpg" class="img-circle" alt="">
+									</span>
+									<span class="subject">
+									<span class="from">
+									Richard Doe </span>
+									<span class="time">16 mins </span>
+									</span>
+									<span class="message">
+									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<span class="photo">
+									<img src="../../../assets/admin/layout4/img/avatar1.jpg" class="img-circle" alt="">
+									</span>
+									<span class="subject">
+									<span class="from">
+									Bob Nilson </span>
+									<span class="time">2 hrs </span>
+									</span>
+									<span class="message">
+									Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<span class="photo">
+									<img src="../../../assets/admin/layout4/img/avatar2.jpg" class="img-circle" alt="">
+									</span>
+									<span class="subject">
+									<span class="from">
+									Lisa Wong </span>
+									<span class="time">40 mins </span>
+									</span>
+									<span class="message">
+									Vivamus sed auctor 40% nibh congue nibh... </span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+									<span class="photo">
+									<img src="../../../assets/admin/layout4/img/avatar3.jpg" class="img-circle" alt="">
+									</span>
+									<span class="subject">
+									<span class="from">
+									Richard Doe </span>
+									<span class="time">46 mins </span>
+									</span>
+									<span class="message">
+									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+				<!-- END INBOX DROPDOWN -->
+				<li class="separator hide"></li>
 				<!-- BEGIN TODO DROPDOWN -->
-				<li class="dropdown dropdown-extended dropdown-dark dropdown-tasks" id="header_task_bar">
-					<a href="javascript:;" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
+				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+				<li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 					<i class="icon-calendar"></i>
-					<span class="badge badge-default">3</span>
+					<span class="badge badge-primary">
+					3 </span>
 					</a>
 					<ul class="dropdown-menu extended tasks">
 						<li class="external">
-							<h3>You have <strong>12 pending</strong> tasks</h3>
-							<a href="javascript:;">view all</a>
+							<h3>You have <span class="bold">12 pending</span> tasks</h3>
+							<a href="#/profile/dashboard">view all</a>
 						</li>
 						<li>
 							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
@@ -215,102 +366,15 @@
 					</ul>
 				</li>
 				<!-- END TODO DROPDOWN -->
-				<li class="droddown dropdown-separator">
-					<span class="separator"></span>
-				</li>
-				<!-- BEGIN INBOX DROPDOWN -->
-				<li class="dropdown dropdown-extended dropdown-dark dropdown-inbox" id="header_inbox_bar">
-					<a href="javascript:;" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
-					<span class="circle">3</span>
-					<span class="corner"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li class="external">
-							<h3>You have <strong>7 New</strong> Messages</h3>
-							<a href="javascript:;">view all</a>
-						</li>
-						<li>
-							<ul class="dropdown-menu-list scroller" style="height: 275px;" data-handle-color="#637283">
-								<li>
-									<a href="inbox.html?a=view">
-									<span class="photo">
-									<img src="../../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Lisa Wong </span>
-									<span class="time">Just Now </span>
-									</span>
-									<span class="message">
-									Vivamus sed auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-									</a>
-								</li>
-								<li>
-									<a href="inbox.html?a=view">
-									<span class="photo">
-									<img src="../../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Richard Doe </span>
-									<span class="time">16 mins </span>
-									</span>
-									<span class="message">
-									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-									</a>
-								</li>
-								<li>
-									<a href="inbox.html?a=view">
-									<span class="photo">
-									<img src="../../../assets/admin/layout3/img/avatar1.jpg" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Bob Nilson </span>
-									<span class="time">2 hrs </span>
-									</span>
-									<span class="message">
-									Vivamus sed nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-									</a>
-								</li>
-								<li>
-									<a href="inbox.html?a=view">
-									<span class="photo">
-									<img src="../../../assets/admin/layout3/img/avatar2.jpg" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Lisa Wong </span>
-									<span class="time">40 mins </span>
-									</span>
-									<span class="message">
-									Vivamus sed auctor 40% nibh congue nibh... </span>
-									</a>
-								</li>
-								<li>
-									<a href="inbox.html?a=view">
-									<span class="photo">
-									<img src="../../../assets/admin/layout3/img/avatar3.jpg" class="img-circle" alt="">
-									</span>
-									<span class="subject">
-									<span class="from">
-									Richard Doe </span>
-									<span class="time">46 mins </span>
-									</span>
-									<span class="message">
-									Vivamus sed congue nibh auctor nibh congue nibh. auctor nibh auctor nibh... </span>
-									</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<!-- END INBOX DROPDOWN -->
 				<!-- BEGIN USER LOGIN DROPDOWN -->
+				<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
 				<li class="dropdown dropdown-user dropdown-dark">
-					<a href="javascript:;" class="dropdown-toggle" dropdown-menu-hover data-toggle="dropdown" data-close-others="true">
-					<img alt="" class="img-circle" src="../../../assets/admin/layout3/img/avatar9.jpg">
-					<span class="username username-hide-mobile">Nick</span>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+						<span class="username username-hide-on-mobile">
+						Nick 
+						</span>
+						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
+						<img alt="" class="img-circle" src="../../../assets/admin/layout4/img/avatar9.jpg"/>
 					</a>
 					<ul class="dropdown-menu dropdown-menu-default">
 						<li>
@@ -350,323 +414,6 @@
 		</div>
 		<!-- END TOP NAVIGATION MENU -->
 	</div>
+	<!-- END PAGE TOP -->
 </div>
-<!-- END HEADER TOP -->
-<!-- BEGIN HEADER MENU -->
-<div class="page-header-menu">
-	<div class="container">
-		<!-- BEGIN HEADER SEARCH BOX -->
-		<form class="search-form" action="extra_search.html" method="GET">
-			<div class="input-group">
-				<input type="text" class="form-control" placeholder="Search" name="query">
-				<span class="input-group-btn">
-				<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
-				</span>
-			</div>
-		</form>
-		<!-- END HEADER SEARCH BOX -->
-		<!-- BEGIN MEGA MENU -->
-		<!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
-		<!-- DOC: Remove dropdown-menu-hover and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
-		<div class="hor-menu">
-			<ul class="nav navbar-nav">
-				<li class="active">
-					<a href="#/dashboard.html">Dashboard</a>
-				</li>
-				<li class="menu-dropdown mega-menu-dropdown ">
-					<a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="#" class="dropdown-toggle">
-					AngularJS <i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="dropdown-menu" style="min-width: 410px">
-						<li>
-							<div class="mega-menu-content">
-								<div class="row">
-									<div class="col-md-6">
-										<ul class="mega-menu-submenu">
-											<li>
-												<h3>AngularJS Features</h3>
-											</li>
-											<li>
-												<a href="#/ui_bootstrap.html" class="iconify">
-												<i class="icon-puzzle"></i>
-												UI Bootstrap </a>
-											</li>
-											<li>
-												<a href="#/file_upload.html" class="iconify">
-												<i class="icon-paper-clip"></i>
-												File Upload </a>
-											</li>
-											<li>
-												<a href="#/ui_select.html" class="iconify">
-												<i class="icon-check"></i>
-												UI Select </a>
-											</li>
-										</ul>
-									</div>
-									<div class="col-md-6">
-										<ul class="mega-menu-submenu">
-											<li>
-												<h3>Sample Column</h3>
-											</li>
-											<li>
-												<a href="#" class="iconify">
-												<i class="icon-cursor-move"></i>
-												Sample Section 1 </a>
-											</li>
-											<li>
-												<a href="#" class="iconify">
-												<i class="icon-pin"></i>
-												Sample Section 1 </a>
-											</li>
-											<li>
-												<a href="#" class="iconify">
-												<i class="icon-bar-chart"></i>
-												Sample Section 1 </a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</li>
-				<li class="menu-dropdown mega-menu-dropdown mega-menu-full ">
-					<a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" class="dropdown-toggle">
-					jQuery <i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="dropdown-menu">
-						<li>
-							<div class="mega-menu-content">
-								<div class="row">
-									<div class="col-md-3">
-										<ul class="mega-menu-submenu">
-											<li>
-												<h3>jQuery Integration</h3>
-											</li>
-											<li>
-												<a href="#/form-tools">
-													<i class="icon-puzzle"></i> Form Tools
-												</a>
-											</li>
-											<li>
-												<a href="#/pickers">
-													<i class="icon-calendar"></i> Date & Time Pickers
-												</a>
-											</li>
-											<li>
-												<a href="#/dropdowns">
-													<i class="icon-refresh"></i> Custom Dropdowns
-												</a>
-											</li>
-											<li>
-												<a href="#/tree">
-													<i class="icon-share"></i> Tree View
-												</a>
-											</li>
-											<li>
-												<a href="#/datatables/advanced.html">
-												<i class="icon-tag"></i> Advanced Datatables
-												</a>
-											</li>
-											<li>
-												<a href="#/datatables/ajax.html">
-												<i class="icon-refresh"></i> Ajax Datatables
-												</a>
-											</li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<ul class="mega-menu-submenu">
-											<li>
-												<h3>Sample Column</h3>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link </a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link <span class="badge badge-roundless badge-danger">new</span></a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link </a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link </a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link </a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link </a>
-											</li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<ul class="mega-menu-submenu">
-											<li>
-												<h3>Sample Column</h3>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link </a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link<span class="badge badge-roundless badge-success">new</span></a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-										</ul>
-									</div>
-									<div class="col-md-3">
-										<ul class="mega-menu-submenu">
-											<li>
-												<h3>Sample Column</h3>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-											<li>
-												<a href="#">
-												<i class="fa fa-angle-right"></i>
-												Sample Link</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</li>
-					</ul>
-				</li>
-				<li class="menu-dropdown classic-menu-dropdown ">
-					<a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;">
-					Pages <i class="fa fa-angle-down"></i>
-					</a>
-					<ul class="dropdown-menu pull-left">
-						<li>
-							<a href="#/profile/dashboard" id="sidebar_menu_link_profile">
-								<i class="icon-user"></i>
-								User Profile 
-							</a>
-						</li>
-						<li>
-							<a href="#/todo">
-								<i class="icon-check"></i>
-								Task & Todo 
-							</a>
-						</li>
-						<li class=" dropdown-submenu">
-							<a href="javascript:;">
-							<i class="icon-puzzle"></i>
-							Multi Level </a>
-							<ul class="dropdown-menu">
-								<li class=" ">
-									<a href="javascript:;">
-									<i class="icon-settings"></i>
-									Item 1 </a>
-								</li>
-								<li class=" ">
-									<a href="javascript:;">
-									<i class="icon-user"></i>
-									Item 2 </a>
-								</li>
-								<li class=" ">
-									<a href="javascript:;">
-									<i class="icon-globe"></i>
-									Item 3 </a>
-								</li>
-								<li class=" dropdown-submenu">
-									<a href="#">
-									<i class="icon-folder"></i>
-									Sub Items </a>
-									<ul class="dropdown-menu">
-										<li class=" ">
-											<a href="javascript:;">
-											Item 1 </a>
-										</li>
-										<li class=" ">
-											<a href="javascript:;">
-											Item 2 </a>
-										</li>
-										<li class=" ">
-											<a href="javascript:;">
-											Item 3 </a>
-										</li>
-										<li class=" ">
-											<a href="javascript:;">
-											Item 4 </a>
-										</li>
-									</ul>
-								</li>
-								<li class=" ">
-									<a href="javascript:;">
-									<i class="icon-share"></i>
-									Item 4 </a>
-								</li>
-								<li class=" ">
-									<a href="javascript:;">
-									<i class="icon-bar-chart"></i>
-									Item 5 </a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<!--<li class="menu-dropdown">
-					<a href="../index.html" target="_blank" class="tooltips" data-container="body" data-placement="bottom" data-html="true" data-original-title="HTML Version demo">
-					HTML Version</a>
-				</li>-->
-			</ul>
-		</div>
-		<!-- END MEGA MENU -->
-	</div>
-</div>
-<!-- END HEADER MENU -->
+<!-- END HEADER INNER -->
