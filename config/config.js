@@ -19,15 +19,15 @@ module.exports =
         app: {
           name: 'JumpersUp Dev'
         },
-        port: 8010
+        port: 8080
       },
       test: {
         db: 'mongodb://localhost/jumpersup_db_test',
-				url: 'http://localhost:8090',
+				url: 'http://localhost:8085',
         root: rootPath,
         app: {
           name: 'JumpersUp Test'
         },
-        port: 8015
+        port: 8085
       }
     };
