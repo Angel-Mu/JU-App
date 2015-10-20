@@ -126,6 +126,17 @@ MetronicApp.controller('FooterController', ['$scope', function($scope) {
 		});
 }]);
 
+/* Setup Layout Part - Sidebar */
+// MetronicApp.controller('LoginController', ['$scope', function($scope) {
+// 		// $scope.$on('$viewContentLoaded', function() {
+// 				// Metronic.init(); // init metronic core components
+// 				// Layout.init(); // init current layout
+// 				// Login.init();
+// 				// Demo.init();
+// 		// });
+// }]);
+
+
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
@@ -156,7 +167,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 														'../assets/global/plugins/morris/morris.min.js',
 														'../assets/global/plugins/morris/raphael-min.js',
 														'../assets/global/plugins/jquery.sparkline.min.js',
-
 														'../assets/admin/pages/scripts/index3.js',
 														'../assets/admin/pages/scripts/tasks.js',
 
@@ -169,6 +179,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 
 				.state('home', {
 					url: "/home",
+					// controller:"HomeController"
 					templateUrl: "views/home.html",
 					resolve: {
 								deps: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -176,6 +187,46 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 												name: 'MetronicApp',
 												files: [
 														'js/controllers/HomeController.js'
+												]
+										}]);
+								}]
+						}
+				})
+
+				.state('login', {
+					url: "/login",
+					templateUrl: "views/login.html",
+					controller:"LoginController",
+					resolve: {
+								deps: ['$ocLazyLoad', function($ocLazyLoad) {
+										return $ocLazyLoad.load([
+										{
+												name: 'MetronicApp',
+												insertBefore: '#ng_load_plugins_before',
+												files: [
+														'../assets/admin/layout/css/layout.css',
+														'../assets/admin/pages/css/login-soft.css',
+														'../assets/global/plugins/bootstrap/css/bootstrap.min.css',
+														'../assets/global/plugins/uniform/css/uniform.default.css',
+														'../assets/global/css/plugins.css',
+														'../assets/admin/layout/css/themes/default.css',
+														'../assets/global/plugins/select2/select2.css',
+														'../assets/global/plugins/jquery.min.js',
+														
+														'../assets/global/plugins/jquery-migrate.min.js',
+														'../assets/global/plugins/jquery.blockui.min.js',
+														'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
+														'../assets/global/plugins/jquery.blockui.min.js',
+														'../assets/global/plugins/uniform/jquery.uniform.min.js',
+														'../assets/global/plugins/select2/select2.min.js',
+
+														'../assets/global/plugins/jquery-validation/js/jquery.validate.min.js',
+														'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
+														'../assets/global/scripts/metronic.js',
+														'../assets/admin/layout/scripts/layout.js',	
+														'../assets/admin/layout/scripts/demo.js',
+														'../assets/admin/pages/scripts/login-soft.js',
+														'js/controllers/LoginController.js'
 												]
 										}]);
 								}]
