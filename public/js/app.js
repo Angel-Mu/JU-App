@@ -130,7 +130,7 @@ MetronicApp.controller('FooterController', ['$scope', function($scope) {
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
 		// Redirect any unmatched url
-		$urlRouterProvider.otherwise("/app/dashboard");
+		$urlRouterProvider.otherwise("/home");
 
 		$stateProvider
 
