@@ -210,7 +210,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 							'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
 							'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
 							'../assets/admin/pages/scripts/login-soft.js',
-							'js/controllers/LoginController.js'
+							'js/controllers/AccessController.js'
 						]
 					}]);
 				}]
@@ -233,7 +233,30 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 							'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
 							'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
 							'../assets/admin/pages/scripts/login-soft.js',
-							'js/controllers/SignupController.js'
+							'js/controllers/AccessController.js'
+						]
+					}]);
+				}]
+			}
+		})
+
+	.state('forget-password', {
+			url: "/forget-password",
+			templateUrl: "views/forget-password.html",
+			controller: "SignupController",
+			resolve: {
+				deps: ['$ocLazyLoad', function($ocLazyLoad) {
+					return $ocLazyLoad.load([{
+						name: 'MetronicApp',
+						insertBefore: '#ng_load_plugins_before',
+						files: [
+							'../assets/admin/pages/css/login-soft.css',
+							'../assets/global/plugins/bootstrap/css/bootstrap.min.css',
+							'../assets/global/plugins/jquery.min.js',
+							'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
+							'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
+							'../assets/admin/pages/scripts/login-soft.js',
+							'js/controllers/AccessController.js'
 						]
 					}]);
 				}]
