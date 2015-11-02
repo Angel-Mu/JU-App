@@ -138,9 +138,9 @@ module.exports = function(app, router) {
 			next(new Error(errors[0].msg));
 			return;
 		}
-		Account.findByUsername(req.body.email, function (err, account){
+		Account.findByUsername(req.body.username, function (err, account){
 			if (account != null ) {
-				return res.send(400, { message:'El email ' + req.body.email + ' ya se encuentra registrado.' });
+				return res.send(400, { message:'El email ' + req.body.username + ' ya se encuentra registrado.' });
 			}else{
 				var user = new User(req.body);
 				if(req.user){
@@ -151,10 +151,12 @@ module.exports = function(app, router) {
 						next(err);
 						return;
 					}
-					res.send(201, userInfo);
-					if (req.body.email && req.body.password){
+					if (req.body.username && req.body.password){
 						log.info("Usuario creado  email:"+req.body.email);
-						return createAccount(req.body.email, req.body.password, userInfo);
+						return createAccount(req.body.username, req.body.password, userInfo, function(data){
+							log.info("Everything went fine! Account created successfully!")
+							res.status(201).send(userInfo);
+						});
 					}
 				});
 				return;
@@ -162,12 +164,13 @@ module.exports = function(app, router) {
 		});  
 	}
 
-	createAccount = function(username,password,user) {
-		Account.register(new Account({ username : username.toLowerCase(), user_id:user._id }), password.toString(), function(err, account) {
+	createAccount = function(username, password, user, cb) {
+		Account.register(new Account({ username : username, user_id:user._id, user_email:user.email }), password.toString(), function(err, account) {
 			if (err) {
 				log.error(err);
 			} else {
-				log.info("Cuenta creada");
+				log.info("Cuenta creada",  account);
+				cb(account);
 			}
 			return;
 		});

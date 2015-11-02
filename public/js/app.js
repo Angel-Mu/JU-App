@@ -7,7 +7,8 @@ var MetronicApp = angular.module("MetronicApp", [
 	"ui.router",
 	"ui.bootstrap",
 	"oc.lazyLoad",
-	"ngSanitize"
+	"ngSanitize",
+	'ngCookies'
 ]);
 
 /* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
@@ -55,6 +56,37 @@ angular.module('myModule').config(['$controllerProvider', function($controllerPr
 }]);
 **/
 
+MetronicApp.factory('authInterceptor', ['$q', '$window', '$injector', function($q, $window, $injector) {
+	return {
+		request: function(config) {
+			config.headers = config.headers || {};
+			if ($window.localStorage.token) {
+				config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+			}
+			return config;
+		},
+		response: function(response) {
+			if (response.status === 401) {
+				// handle the case where the user is not authenticated
+			}
+			return response || $q.when(response);
+		},
+		responseError: function(rejection) {
+			if (rejection.status == 401) {
+				var $state = $injector.get("$state");
+				$state.go('login')
+					// location.reload();
+			}
+			return $q.reject(rejection);
+		}
+	};
+}]);
+
+MetronicApp.config(['$httpProvider', function($httpProvider) {
+	$httpProvider.interceptors.push('authInterceptor');
+}]);
+
+
 //AngularJS v1.3.x workaround for old style controller declarition in HTML
 MetronicApp.config(['$controllerProvider', function($controllerProvider) {
 	// this option might be handy for migrating old apps, but please don't use it
@@ -65,23 +97,6 @@ MetronicApp.config(['$controllerProvider', function($controllerProvider) {
 /********************************************
  END: BREAKING CHANGE in AngularJS v1.3.x:
 *********************************************/
-
-/* Setup global settings */
-MetronicApp.factory('settings', ['$rootScope', function($rootScope) {
-	// supported languages
-	var settings = {
-		layout: {
-			pageSidebarClosed: true, // sidebar state
-			pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
-		},
-		layoutImgPath: Metronic.getAssetsPath() + 'admin/layout/img/',
-		layoutCssPath: Metronic.getAssetsPath() + 'admin/layout/css/'
-	};
-
-	$rootScope.settings = settings;
-
-	return settings;
-}]);
 
 /* Setup App Main Controller */
 MetronicApp.controller('AppController', ['$scope', '$rootScope', function($scope, $rootScope) {
@@ -126,22 +141,16 @@ MetronicApp.controller('FooterController', ['$scope', function($scope) {
 	});
 }]);
 
-/* Setup Layout Part - Sidebar */
-// MetronicApp.controller('LoginController', ['$scope', function($scope) {
-// 		// $scope.$on('$viewContentLoaded', function() {
-// 				// Metronic.init(); // init metronic core components
-// 				// Layout.init(); // init current layout
-// 				// Login.init();
-// 				// Demo.init();
-// 		// });
-// }]);
-
-
 /* Setup Rounting For All Pages */
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
 	// Redirect any unmatched url
-	$urlRouterProvider.otherwise("/home");
+	$urlRouterProvider
+		.otherwise(function($injector, $location) {
+			// This function prevents  the infinite loop on otherwise while session wasn't found
+			var $state = $injector.get("$state");
+			$state.go("home");
+		});
 
 	$stateProvider
 
@@ -157,6 +166,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 				pageTitle: 'Dashboard',
 				pageSubTitle: 'statistics & reports'
 			},
+			requireLogin: true,
 			controller: "DashboardController",
 			resolve: {
 				deps: ['$ocLazyLoad', function($ocLazyLoad) {
@@ -195,55 +205,59 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 	})
 
 	.state('login', {
-			url: "/login",
-			templateUrl: "views/login.html",
-			controller: "LoginController",
-			resolve: {
-				deps: ['$ocLazyLoad', function($ocLazyLoad) {
-					return $ocLazyLoad.load([{
-						name: 'MetronicApp',
-						insertBefore: '#ng_load_plugins_before',
-						files: [
-							'../assets/admin/pages/css/login-soft.css',
-							'../assets/global/plugins/bootstrap/css/bootstrap.min.css',
-							'../assets/global/plugins/jquery.min.js',
-							'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
-							'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
-							'../assets/admin/pages/scripts/login-soft.js',
-							'js/controllers/AccessController.js'
-						]
-					}]);
-				}]
-			}
-		})
+		url: "/login",
+		templateUrl: "views/login.html",
+		controller: "LoginController",
+		resolve: {
+			deps: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load([{
+					name: 'MetronicApp',
+					insertBefore: '#ng_load_plugins_before',
+					files: [
+						'../assets/admin/pages/css/login-soft.css',
+						'../assets/global/plugins/bootstrap/css/bootstrap.min.css',
+						'../assets/global/plugins/jquery.min.js',
+						'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
+						'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
+						'../assets/admin/pages/scripts/login-soft.js',
+						'js/controllers/AccessController.js',
+						'js/services/AccessService.js',
+						'js/services/CommonService.js'
+					]
+				}]);
+			}]
+		}
+	})
 
 	.state('signup', {
-			url: "/signup",
-			templateUrl: "views/signup.html",
-			controller: "SignupController",
-			resolve: {
-				deps: ['$ocLazyLoad', function($ocLazyLoad) {
-					return $ocLazyLoad.load([{
-						name: 'MetronicApp',
-						insertBefore: '#ng_load_plugins_before',
-						files: [
-							'../assets/admin/pages/css/login-soft.css',
-							'../assets/global/plugins/bootstrap/css/bootstrap.min.css',
-							'../assets/global/plugins/jquery.min.js',
-							'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
-							'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
-							'../assets/admin/pages/scripts/login-soft.js',
-							'js/controllers/AccessController.js'
-						]
-					}]);
-				}]
-			}
-		})
+		url: "/signup",
+		templateUrl: "views/signup.html",
+		controller: "SignupController",
+		resolve: {
+			deps: ['$ocLazyLoad', function($ocLazyLoad) {
+				return $ocLazyLoad.load([{
+					name: 'MetronicApp',
+					insertBefore: '#ng_load_plugins_before',
+					files: [
+						'../assets/admin/pages/css/login-soft.css',
+						'../assets/global/plugins/bootstrap/css/bootstrap.min.css',
+						'../assets/global/plugins/jquery.min.js',
+						'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
+						'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
+						'../assets/admin/pages/scripts/login-soft.js',
+						'js/controllers/AccessController.js',
+						'js/services/AccessService.js',
+						'js/services/CommonService.js'
+					]
+				}]);
+			}]
+		}
+	})
 
 	.state('forget-password', {
 			url: "/forget-password",
 			templateUrl: "views/forget-password.html",
-			controller: "SignupController",
+			controller: "ForgetPasswordController",
 			resolve: {
 				deps: ['$ocLazyLoad', function($ocLazyLoad) {
 					return $ocLazyLoad.load([{
@@ -256,7 +270,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 							'../assets/global/plugins/bootstrap/js/bootstrap.min.js',
 							'../assets/global/plugins/backstretch/jquery.backstretch.min.js',
 							'../assets/admin/pages/scripts/login-soft.js',
-							'js/controllers/AccessController.js'
+							'js/controllers/AccessController.js',
+							'js/services/AccessService.js',
+							'js/services/CommonService.js'
 						]
 					}]);
 				}]
@@ -634,6 +650,25 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvi
 }]);
 
 /* Init global settings and run the app */
-MetronicApp.run(["$rootScope", "settings", "$state", function($rootScope, settings, $state) {
-	$rootScope.$state = $state; // state to be accessed from view
-}]);
+MetronicApp
+	.service('AuthenticateService', ['$http', '$cookieStore', '$window', function($http, $cookieStore, $window) {
+		this.isLoggedIn = function() {
+			if (!$cookieStore.get('JU_user_logged') || $cookieStore.get('JU_user_logged') == false || !$window.localStorage.token) {
+				return false;
+			} else {
+				return true;
+			};
+		};
+	}])
+	.run(['$rootScope', '$state', '$stateParams', 'AuthenticateService', '$window',
+		function($rootScope, $state, $stateParams, AuthenticateService, $window) {
+			$rootScope.$state = $state;
+			$rootScope.$on('$stateChangeStart', function(event, toState) {
+				if (toState.name != 'login' && !AuthenticateService.isLoggedIn() && toState.requireLogin) {
+					$state.go('login');
+					event.preventDefault();
+					return;
+				}
+			});
+		}
+	])

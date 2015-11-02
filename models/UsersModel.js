@@ -27,14 +27,15 @@ var UserModel = new Schema({
 											_id					:{type: Number, ref:"States"},
 											name				:{type: String}
 										},
+	country 					:{
+											_id					:{type: Number, ref:"Countries"},
+											name				:{type: String}
+										},
+
 	// User profile
 	profile 				: {
 											_id					:{type: String, ref:"Profiles"},
 											name				:{type: String}
-										},
-	level 					: {
-											_id						:{type:String, ref:'Levels'},
-											name 					:{type:String}
 										},
 	// Token created for restore password through email notification
 	resetPasswordToken :String,

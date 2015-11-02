@@ -4,9 +4,9 @@ module.exports = function(app, router) {
 			expressJwt 				= require('express-jwt');
 
 	// Encrypt specific routes
-	router.use('/api', expressJwt({secret: app.secret}));
+	// router.use('/api', expressJwt({secret: app.secret}));
 	
-	router.route('/api/profiles')
+	router.route('/profiles')
 		.get(function (req, res, next) {
 			Profile.find(function(err, profiles) {
 				if (err)
@@ -28,7 +28,7 @@ module.exports = function(app, router) {
 			});
 		});
 
-	router.route('/api/profiles/:id')
+	router.route('/profiles/:id')
 		.get(function (req, res, next) {
 			Profile.findById(req.params.id, function(err, data) {
 				if (err){
