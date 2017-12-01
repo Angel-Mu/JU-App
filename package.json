@@ -24,7 +24,7 @@
 		"async": "0.9.x",
 		"body-parser": "~1.0.0",
 		"bunyan": "^1.4.0",
-		"ejs": "^0.8.5",
+		"ejs": "2.5.5.",
 		"email-templates": "^2.0.1",
 		"express": "^4.0.0",
 		"express-jwt": "^0.5.1",
